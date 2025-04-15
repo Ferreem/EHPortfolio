@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-eBlue: #051B75;
+  --color-eYellow: #C9D039;
+  --color-eGrey: #E9E9E9;
+
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Jockey One", sans-serif;
+}
