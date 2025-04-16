@@ -18,7 +18,14 @@ export default function Footer() {
           <img className="w-4" src={linkedin} alt="linkedIn" />
         </a>
       </div>
-      <div className='text-white w-xl flex justify-center' >
+      <div className='text-white w-xl flex justify-center 
+      '
+      style={{
+        fontFamily: '"Funnel Sans", sans-serif',
+        fontOpticalSizing: 'auto',
+        fontStyle: 'normal',
+        fontWeight: '400'
+      }} >
         © 2025 Eliska Havelkova
       </div>
       <div className='flex justify-between w-1/12 !mr-10'>

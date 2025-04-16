@@ -28,7 +28,7 @@ export default function Hero() {
               <br /><br />
               Ve volném čase ráda hraji počítačové i deskové hry, sportuji s přáteli – momentálně badminton a jumping – a věnuji se svým dvěma ragdoll kočkám. Kromě těchto aktivit i ráda peču, ochutnávám nová jídla nebo prozkoumávám okolí.
             </p>
-            <button>Zivotopis</button>
+            <button className='text-eBlue border-2 !px-4 rounded-md absolute right-8'>Zivotopis.pdf</button>
           </div>
         </div>
         
