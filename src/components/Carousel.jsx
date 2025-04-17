@@ -2,30 +2,50 @@ import React from 'react'
 import { useRef } from 'react';
 import Header from './Header';
 import { motion } from "framer-motion"; 
-
 import CarouselItemData from '../data/CarouselItemdata';
 import { useState, useEffect } from 'react';
 
 export default function Carousel() {
-  let [clickedImgIndex, setClickedImgIndex] = useState(4);
+  let [clickedImgIndex, setClickedImgIndex] = useState(3);
   const [imgText, setImgText] = useState("")
   const scrollRef = useRef(null);
+  const [shift, setShift] = useState(0)
 
-  const scrollLeft = () => {
+  const scrollLeft = (distance) => {
     scrollRef.current.scrollBy({
-      left: -250,
+      left: -192 * distance,
       behavior: 'smooth',
     });
   };
 
-  const scrollRight = () => {
+  const scrollRight = (distance) => {
+    
+
     scrollRef.current.scrollBy({
-      left: 250,
+      left: 192 * distance,
       behavior: 'smooth',
     });
   };
+
+  const handleClick = (clickedIndex) => {
+    console.log(`was: ${clickedImgIndex} now: ${clickedIndex}`)
+    let distance = clickedImgIndex - clickedIndex
+    
+    if(distance < 0){
+      distance = -distance;
+    }
+    setShift(distance)
+    console.log(`shift: ${shift}`)
+    if(clickedImgIndex < clickedIndex){
+      scrollRight(distance);
+    }else if (clickedImgIndex > clickedIndex) {
+      scrollLeft(distance);
+    }
+    setClickedImgIndex(clickedIndex)
+  };
+
   useEffect(() =>{
-    CarouselItemData.map((item, index) => {
+    CarouselItemData.forEach((item, index) => {
       if(clickedImgIndex === index){
         console.log(`Uve clicked ${index} picture`);
         setImgText(item.text);
@@ -38,7 +58,7 @@ export default function Carousel() {
       <div className='absolute right-0 top-5'>
         <Header>O mne</Header> 
       </div>
-      <div className='w-full h-5/9 flex overflow-x-auto whitespace-nowrap scrollbar-hide !mx-24 no-scrollbar scroll-behavior: smooth items-center'>
+      <div ref={scrollRef} className='w-full h-5/9 flex overflow-x-auto whitespace-nowrap scrollbar-hide !mx-24 no-scrollbar items-center'>
       {CarouselItemData.map((item, index) => (
           
           <motion.div
@@ -46,11 +66,11 @@ export default function Carousel() {
             initial={{ filter: 'blur(3px)', scale: 0.65, }}
             
             whileTap={{ scale: 1, filter: 'blur(0px)' }} // Changed onTap to whileTap
-            onClick={() => setClickedImgIndex(index)}
+            onClick={() => handleClick(index)}
             transition={{ duration: 0.3 }}
             className=" rounded-md overflow-hidden flex-shrink-0 h-48 w-48 flex flex-col justify-center "
           >
-          <motion.img 
+          <img 
             src={item.image} 
             alt="" 
             className='w-full h-full object-cover'
