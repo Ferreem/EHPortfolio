@@ -3,6 +3,7 @@ import burgerMenu from "../assets/burgerMenu.svg";
 import instagram from "../assets/instagram.svg";
 import facebook from "../assets/Facebook.svg";
 import linkedin from "../assets/Linkedin.svg";
+import Header from "./Header";
 
 export default function Navbar() {
   return (
@@ -23,8 +24,7 @@ export default function Navbar() {
       </div>
 
       <div className="absolute right-0 bottom-2 flex h-10 w-30 justify-end items-center">
-        <h1 className="!mr-2 text-white text-2xl absolute left-2 top-0">Úvod</h1>
-        <div className="bg-white h-1.5 w-14 absolute"></div>
+        <Header>Uvod</Header>
       </div>
     </div>
   );
