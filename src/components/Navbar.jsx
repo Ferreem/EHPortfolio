@@ -22,10 +22,9 @@ export default function Navbar() {
         </a>
 
       </div>
-
-      <div className="absolute right-0 bottom-2 flex h-10 w-30 justify-end items-center">
-        <Header>Uvod</Header>
-      </div>
+        <div className="absolute right-0 bottom-2">
+          <Header>Uvod</Header>
+        </div>
     </div>
   );
 }

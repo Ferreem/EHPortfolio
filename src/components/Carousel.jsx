@@ -1,11 +1,14 @@
 import React from 'react'
 import { useRef } from 'react';
 import Header from './Header';
+import { motion } from "framer-motion"; 
 
 import CarouselItemData from '../data/CarouselItemdata';
+import { useState, useEffect } from 'react';
 
 export default function Carousel() {
-  
+  let [clickedImgIndex, setClickedImgIndex] = useState(4);
+  const [imgText, setImgText] = useState("")
   const scrollRef = useRef(null);
 
   const scrollLeft = () => {
@@ -21,16 +24,43 @@ export default function Carousel() {
       behavior: 'smooth',
     });
   };
+  useEffect(() =>{
+    CarouselItemData.map((item, index) => {
+      if(clickedImgIndex === index){
+        console.log(`Uve clicked ${index} picture`);
+        setImgText(item.text);
+      }
+    })
+  },[clickedImgIndex])
 
   return (
-    <div className='w-full h-96 bg-eBlue bg-gradient-to-r from-eYellow flex items-center relative'>
-      
-      <Header>O mne</Header> 
-      <div className='w-full h-2/5 flex overflow-x-auto whitespace-nowrap scrollbar-hide !mx-32 no-scrollbar'>
-      {CarouselItemData.map((item, index) =>(
-        <img className='!mr-6 rounded-2xl blur-xs' src={item.image} alt="" />
-      ))}
+    <div className='w-full h-96 bg-eBlue bg-gradient-to-r from-eYellow flex flex-col items-center justify-center relative'>
+      <div className='absolute right-0 top-5'>
+        <Header>O mne</Header> 
       </div>
+      <div className='w-full h-5/9 flex overflow-x-auto whitespace-nowrap scrollbar-hide !mx-24 no-scrollbar scroll-behavior: smooth items-center'>
+      {CarouselItemData.map((item, index) => (
+          
+          <motion.div
+            key={index}
+            initial={{ filter: 'blur(3px)', scale: 0.65, }}
+            
+            whileTap={{ scale: 1, filter: 'blur(0px)' }} // Changed onTap to whileTap
+            onClick={() => setClickedImgIndex(index)}
+            transition={{ duration: 0.3 }}
+            className=" rounded-md overflow-hidden flex-shrink-0 h-48 w-48 flex flex-col justify-center "
+          >
+          <motion.img 
+            src={item.image} 
+            alt="" 
+            className='w-full h-full object-cover'
+          />
+          </motion.div>
+          
+        ))}
+      </div>
+      <div className='text-white border-white border-2 rounded-xl !mt-2 !p-2 '>{imgText}</div>
+
     </div>
   )
 }

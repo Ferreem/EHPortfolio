@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <div className='h-lvh'>
+      <div className='bg-eGrey' style={{height:'110vh'}}>
         <Navbar/>
         <Hero/>
       </div>
