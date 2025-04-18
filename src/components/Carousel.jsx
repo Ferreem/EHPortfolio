@@ -6,42 +6,25 @@ import CarouselItemData from '../data/CarouselItemdata';
 import { useState, useEffect } from 'react';
 
 export default function Carousel() {
-  let [clickedImgIndex, setClickedImgIndex] = useState(3);
+  let [clickedImgIndex, setClickedImgIndex] = useState(4);
   const [imgText, setImgText] = useState("")
   const scrollRef = useRef(null);
-  const [shift, setShift] = useState(0)
 
-  const scrollLeft = (distance) => {
+  const handleClick = (item, index) => {
+    console.log(`was: ${clickedImgIndex} now: ${index}`)
+    let distance = 0;
+    console.log(`index: ${index}`)
+    const itemWidth = 192;
+    distance = index - clickedImgIndex;
+  
     scrollRef.current.scrollBy({
-      left: -192 * distance,
+      left: itemWidth * distance,
       behavior: 'smooth',
+      transition: 2,
     });
-  };
-
-  const scrollRight = (distance) => {
-    
-
-    scrollRef.current.scrollBy({
-      left: 192 * distance,
-      behavior: 'smooth',
-    });
-  };
-
-  const handleClick = (clickedIndex) => {
-    console.log(`was: ${clickedImgIndex} now: ${clickedIndex}`)
-    let distance = clickedImgIndex - clickedIndex
-    
-    if(distance < 0){
-      distance = -distance;
-    }
-    setShift(distance)
-    console.log(`shift: ${shift}`)
-    if(clickedImgIndex < clickedIndex){
-      scrollRight(distance);
-    }else if (clickedImgIndex > clickedIndex) {
-      scrollLeft(distance);
-    }
-    setClickedImgIndex(clickedIndex)
+    // I want to set scale to 1 to item
+    setClickedImgIndex(index);
+    console.log(`distance: ${distance}`);
   };
 
   useEffect(() =>{
@@ -64,10 +47,13 @@ export default function Carousel() {
           <motion.div
             key={index}
             initial={{ filter: 'blur(3px)', scale: 0.65, }}
-            
-            whileTap={{ scale: 1, filter: 'blur(0px)' }} // Changed onTap to whileTap
-            onClick={() => handleClick(index)}
-            transition={{ duration: 0.3 }}
+            animate={{ 
+              scale: clickedImgIndex === index ? 1 : 0.65,
+              filter: clickedImgIndex === index ? 'blur(0px)' : 'blur(3px)'
+              
+            }}
+            onClick={() => handleClick(item, index)}
+            transition={{ duration: 1 }}
             className=" rounded-md overflow-hidden flex-shrink-0 h-48 w-48 flex flex-col justify-center "
           >
           <img 
