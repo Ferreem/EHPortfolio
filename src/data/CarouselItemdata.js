@@ -153,4 +153,6 @@ const carouselItemData = [
     },
 
 ]
+const CarouselLength = carouselItemData.length;
+export {CarouselLength};
 export default carouselItemData;
