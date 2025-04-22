@@ -79,7 +79,7 @@ export default function Carousel() {
       </div>
       <div
         ref={scrollRef}
-        className="w-full h-5/9 flex overflow-x-auto whitespace-nowrap scrollbar-hide !mx-24 no-scrollbar items-center"
+        className="w-full h-5/9 flex overflow-x-auto whitespace-nowrap scrollbar-hide !mx-24 no-scrollbar items-center !mb-10"
       >
         {CarouselItemData.map((item, index) => (
           <motion.div
@@ -129,17 +129,17 @@ export default function Carousel() {
             }}
             onClick={() => handleClick(index + CarouselLength * 2)}
             transition={{ duration: 0.5 }}
-            className=" rounded-md overflow-hidden flex-shrink-0 h-48 w-48 flex flex-col justify-center "
+            className=" rounded-md overflow-hidden flex-shrink-0 h-48 w-48 flex flex-col justify-center"
           >
             <img
               src={item.image}
               alt=""
-              className="w-full h-full object-cover "
+              className="w-full h-full object-cover"
             />
           </motion.div>
         ))}
       </div>
-      <div className="text-white border-white border-2 rounded-xl !mt-2 !p-2 ">
+      <div className="text-white border-white border-2 rounded-xl  !p-2 ">
         {imgText}
       </div>
     </div>

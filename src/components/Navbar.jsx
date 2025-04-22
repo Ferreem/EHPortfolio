@@ -23,7 +23,7 @@ export default function Navbar() {
 
       </div>
         <div className="absolute right-0 bottom-2">
-          <Header>Uvod</Header>
+          <Header distance={window.innerHeight / 1.3}>Uvod</Header>
         </div>
     </div>
   );
