@@ -13,11 +13,11 @@ export default function Work() {
 
   const handleClickUp = () => {
     if (scrollRef.current && currentIndex > 0) {
-      const containerHeight = scrollRef.current.clientHeight;
+      const height = scrollRef.current.getBoundingClientRect().height;
       const newIndex = currentIndex - 1;
       setCurrentIndex(newIndex);
       scrollRef.current.scrollTo({
-        top: newIndex * containerHeight ,
+        top: newIndex * height ,
         behavior: 'smooth',
       });
     }
@@ -25,11 +25,11 @@ export default function Work() {
 
   const handleClickDown = () => {
     if (scrollRef.current && currentIndex < workList.length - 1) {
-      const containerHeight = scrollRef.current.clientHeight;
+      const height = scrollRef.current.getBoundingClientRect().height;
       const newIndex = currentIndex + 1;
       setCurrentIndex(newIndex);
       scrollRef.current.scrollTo({
-        top: newIndex * containerHeight,
+        top: newIndex * height,
         behavior: 'smooth',
       });
     }
