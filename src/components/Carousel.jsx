@@ -54,9 +54,9 @@ export default function Carousel() {
   };
 
   return (
-    <div className="w-full h-96 bg-eBlue bg-gradient-to-r from-eYellow flex flex-col items-center justify-center relative">
+    <div className="w-full h-96 bgLinear flex flex-col items-center justify-center relative">
       <div className="absolute right-0 top-5">
-        <Header>O mne</Header>
+        <Header color={"#ffffff"}>Momentky</Header>
       </div>
       <div
         ref={scrollRef}

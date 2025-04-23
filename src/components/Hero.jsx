@@ -1,6 +1,13 @@
 import React from 'react'
 import Spline from '@splinetool/react-spline';
 
+const handleClick = () => {
+  const link = document.createElement('a');
+  link.href = '../data/EHCV.pdf'; // Can be a local/public file or URL
+  link.download = 'Eliska_Havelkova_CV.pdf'; // Set the filename
+  link.click();
+}
+
 export default function Hero() {
   return (
     <div className='flex h-11/12 bg-eGrey'>
@@ -29,7 +36,7 @@ export default function Hero() {
               <br /><br />
               Ve volném čase ráda hraji počítačové i deskové hry, sportuji s přáteli – momentálně badminton a jumping – a věnuji se svým dvěma ragdoll kočkám. Kromě těchto aktivit i ráda peču, ochutnávám nová jídla nebo prozkoumávám okolí.
             </p>
-            <button className='text-eBlue border-2 !px-4 rounded-md absolute right-8'>Zivotopis.pdf</button>
+            <button onClick={handleClick} className='text-eBlue border-2 !px-4 rounded-md absolute right-8 cursor-pointer'>Zivotopis.pdf</button>
           </div>
         </div>
         

@@ -17,6 +17,11 @@
   font-family: "Jockey One", sans-serif;
 }
 
+.bgLinear{
+  background: #C9D039;
+background: linear-gradient(90deg, rgba(201, 208, 57, 1) 0%, rgba(5, 27, 117, 1) 70%);
+}
+
 .no-scrollbar {
   overflow: auto;                 /* or scroll, if you always want the scrollbar space */
   -ms-overflow-style: none;      /* IE and Edge */
