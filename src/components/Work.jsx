@@ -17,7 +17,7 @@ export default function Work() {
       const newIndex = currentIndex - 1;
       setCurrentIndex(newIndex);
       scrollRef.current.scrollTo({
-        top: newIndex * containerHeight - 2,
+        top: newIndex * containerHeight ,
         behavior: 'smooth',
       });
     }
@@ -29,7 +29,7 @@ export default function Work() {
       const newIndex = currentIndex + 1;
       setCurrentIndex(newIndex);
       scrollRef.current.scrollTo({
-        top: newIndex * containerHeight - 2,
+        top: newIndex * containerHeight,
         behavior: 'smooth',
       });
     }
