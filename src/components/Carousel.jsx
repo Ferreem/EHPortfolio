@@ -55,12 +55,7 @@ export default function Carousel() {
   }, [clickedImgIndex]);
 
   const handleClick = (index) => {
-    console.log(`was: ${clickedImgIndex} now: ${index}`);
-    if (index > 20) {
-    } else if (index < 10) [];
     let distance = 0;
-    console.log(`index: ${index}`);
-
     distance = index - clickedImgIndex;
 
     scrollRef.current.scrollBy({

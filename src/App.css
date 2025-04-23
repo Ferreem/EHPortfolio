@@ -5,7 +5,8 @@
   --color-eYellow: #C9D039;
   --color-eGrey: #E9E9E9;
   --color-eWhite: #EAEAEA;
-
+  --shadow-eButton: 0px 0px 12px 5px rgba(5,27,117,0.10); 
+  --shadow-eBox: 0 25px 50px -12px rgba(5, 27, 117, 0.35);
 }
 
 
@@ -33,6 +34,11 @@
   font-style: normal;
 }
 
+.eLinear {
+  background: #051B75;
+  background: linear-gradient(160deg,rgba(5, 27, 117, 1) 1%, rgba(255, 255, 255, 1) 100%);
+}
+
 
 
 .funnel-sans-550 {
@@ -46,7 +52,7 @@
 .roboto-550 {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 550;
+  font-weight: 800;
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
