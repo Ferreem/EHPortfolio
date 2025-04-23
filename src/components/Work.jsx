@@ -42,7 +42,6 @@ export default function Work() {
       </div>
       <div className='flex w-4/5 h-2/3 !overflow-y-auto no-scrollbar shadow-eBox rounded-xl relative'>
       <div className='flex w-5/7  h-full'>
-a
       </div>
       <div className='w-2/7 eLinear p-6 flex justify-center'>
       <div className='bg-white flex justify-center items-center w-26 h-12 absolute bottom-8 rounded-xl shadow-eButton z-50'>
@@ -62,11 +61,11 @@ a
           src={downArrow} alt="down" />
         </div>
       </div>
-      <div ref={scrollRef} className='flex flex-col w-full h-full !overflow-y-hidden no-scrollbar absolute'>
+      <div ref={scrollRef} className='flex flex-col w-full h-full !overflow-y-hidden no-scrollbar absolute flex-shrink-0'>
       {workList.map((item, index) => (
-        <div key={index} className='flex h-full w-full'>
+        <div key={index} className='flex h-full w-full flex-shrink-0'>
           <div className='w-5/7 h-full'>
-            <div className=' w-full  h-full flex'>
+            <div className=' min-w-full min-h-full flex justify-center items-center'>
               <img src={item.img} className='object-cover ' alt={item.header} />  
             </div>
           </div>
