@@ -8,7 +8,7 @@ import Header from "./Header";
 export default function Navbar() {
   return (
     <div className="w-full h-28 bgLinear flex items-center relative z-50">
-      <img className="absolute left-16 w-8" src={burgerMenu} alt="Menu" />
+
       <div className="absolute right-16 top-8 w-16 h-14 flex justify-between">
         <a href="https://www.facebook.com/elee.chan.5">
           <img className="w-3.5 cursor-pointer" src={facebook} alt="facebook" />
