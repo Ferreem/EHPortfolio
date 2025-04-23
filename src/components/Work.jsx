@@ -65,7 +65,7 @@ a
       <div ref={scrollRef} className='flex flex-col w-full h-full !overflow-y-hidden no-scrollbar absolute'>
       {workList.map((item, index) => (
         <div key={index} className='flex h-full w-full'>
-          <div className='w-5/7'>
+          <div className='w-5/7 h-full'>
             <div className=' w-full  h-full flex'>
               <img src={item.img} className='object-cover ' alt={item.header} />  
             </div>
