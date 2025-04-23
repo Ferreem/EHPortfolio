@@ -16,12 +16,12 @@ export default function Hero() {
           <div className='w-4/6 relative px-8'>
             <div className='relative bg-eGrey h-16'>
             </div>
-            <div className='!py-2 !px-1 !mb-16 w-5/6'>
-            <div className='h-16 w-5/6 flex justify-between items-end relative'>
-                <h2 className='text-5xl absolute left-0 -bottom-2'>Hello, I'm</h2>
-                <h4 className='text-3xl absolute right-0 -bottom-1'>UX / UI designer</h4>
+            <div className='!py-2 !px-1 !mb-16 w-4/6 flex flex-col relative'>
+            <div className='h-16 relative'>
+                <h2 className='text-5xl absolute left-0 -bottom-2 z-50'>Hello, I'm</h2>
+                <h4 className='text-3xl absolute right-0 -bottom-2 z-50'>UX / UI designer</h4>
               </div>
-              <h1 className='3xl:text-8xl 2xl:text-6xl lg:text-5xl md:text-4xl text-eYellow border-6 text-center !py-2 !px-1 w-2/3 relative'>Eliška Havelková</h1>
+              <h1 className='3xl:text-8xl 2xl:text-6xl lg:text-5xl md:text-4xl text-eYellow border-6 text-center !py-2 !px-1 relative'>Eliška Havelková</h1>
             </div>
             <h5 className='text-xl text-eBlue mb-3'>Jsem <span className='italic'>grafická designérka a UX / UI designérka</span></h5><br />
             <p className='text-xl text-eBlue font-thin'>

@@ -7,7 +7,6 @@ import { useRef } from 'react'
 
 export default function Work() {
   const scrollRef = useRef(null);
-  let distance = 0
 
   const handleClickUp = (index) => {
     if (scrollRef.current) {
@@ -15,7 +14,7 @@ export default function Work() {
       const distance = (index - 1) * containerHeight;
   
       scrollRef.current.scrollTo({
-        top: distance,
+        top: distance - 2, // temp fix
         behavior: "smooth",
       });
     }
@@ -27,7 +26,7 @@ export default function Work() {
       const distance = (index + 1) * containerHeight;
   
       scrollRef.current.scrollTo({
-        top: distance,
+        top: distance -2, // temp fix
         behavior: "smooth",
       });
     }
@@ -35,7 +34,7 @@ export default function Work() {
 
   return (
     <div className='w-full h-screen  flex justify-center items-center'>
-      <div ref={scrollRef} className='flex flex-col w-4/5 h-2/3 overflow-y-auto  no-scrollbar shadow-eBox rounded-xl'>
+      <div ref={scrollRef} className='flex flex-col w-4/5 h-2/3 !overflow-y-hidden no-scrollbar shadow-eBox rounded-xl '>
         {workList.map((item, index) => (
           <div key={index} className='w-full h-full flex-shrink-0 flex relative '>
             <div className='flex w-5/7  h-full justify-center items-center' >

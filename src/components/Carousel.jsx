@@ -6,65 +6,51 @@ import CarouselItemData, {CarouselLength} from "../data/CarouselItemdata";
 import { useState, useEffect } from "react";
 
 export default function Carousel() {
-  let middle = (CarouselLength * 3) / 2
-  let [clickedImgIndex, setClickedImgIndex] = useState(middle);
+  const middle = (CarouselLength * 3) / 2;
+  const [clickedImgIndex, setClickedImgIndex] = useState(middle);
   const [imgText, setImgText] = useState("");
   const scrollRef = useRef(null);
   const itemWidth = 192;
   const normalizedIndex = clickedImgIndex % CarouselLength;
 
+  const centerScrollToIndex = (index, behavior = "smooth") => {
+    const container = scrollRef.current;
+    const containerWidth = container.offsetWidth;
+    const centerOffset = (itemWidth * index) - (containerWidth / 2) + (itemWidth / 2);
+
+    container.scrollTo({
+      left: centerOffset,
+      behavior,
+    });
+  };
 
   useEffect(() => {
-    scrollRef.current.scrollLeft = (middle - 4) * itemWidth;
-    CarouselItemData.forEach((index) => {
-
-      console.log(`text set for index: ${index} picture`);
-      setImgText(CarouselItemData[normalizedIndex].text);
-    
-  });
-    
-  },[]);
+    centerScrollToIndex(middle, "auto");
+    setImgText(CarouselItemData[normalizedIndex].text);
+  }, []);
 
   useEffect(() => {
     const currentScroll = scrollRef.current;
-  
+
     if (clickedImgIndex < CarouselLength || clickedImgIndex >= CarouselLength * 2) {
-      // Store newIndex that we want to jump to
       const newIndex = (clickedImgIndex % CarouselLength) + CarouselLength;
-  
-      // First: animate scroll to the clicked index normally
-      const distance = (clickedImgIndex - 4) * itemWidth;
-      currentScroll.scrollTo({
-        left: distance,
-        behavior: "smooth"
-      });
-  
-      // Then: after animation ends, instantly snap to newIndex
+
+      centerScrollToIndex(clickedImgIndex);
+
       const timeout = setTimeout(() => {
-        setClickedImgIndex(newIndex); // triggers this useEffect again but now in middle section
-        currentScroll.scrollTo({
-          left: (newIndex - 4) * itemWidth,
-          behavior: "auto" // no animation — it's a jump
-        });
-      }, 500); // delay should match scroll smooth duration
-  
-      return () => clearTimeout(timeout); // cleanup
+        setClickedImgIndex(newIndex);
+        centerScrollToIndex(newIndex, "auto");
+      }, 500);
+
+      return () => clearTimeout(timeout);
     }
 
     setImgText(CarouselItemData[normalizedIndex].text);
+    centerScrollToIndex(clickedImgIndex);
   }, [clickedImgIndex]);
 
   const handleClick = (index) => {
-    let distance = 0;
-    distance = index - clickedImgIndex;
-
-    scrollRef.current.scrollBy({
-      left: itemWidth * distance,
-      behavior: "smooth",
-      transition: 1,
-    });
     setClickedImgIndex(index);
-    console.log(`distance: ${distance}`);
   };
 
   return (
@@ -74,7 +60,7 @@ export default function Carousel() {
       </div>
       <div
         ref={scrollRef}
-        className="w-full h-5/9 flex overflow-x-auto whitespace-nowrap scrollbar-hide !mx-24 no-scrollbar items-center !mb-10"
+        className="w-full h-5/9 flex !overflow-x-hidden whitespace-nowrap !mx-24 no-scrollbar items-center !mb-10"
       >
         {CarouselItemData.map((item, index) => (
           <motion.div
