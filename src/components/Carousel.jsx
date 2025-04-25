@@ -10,7 +10,7 @@ export default function Carousel() {
   const [clickedImgIndex, setClickedImgIndex] = useState(middle);
   const [imgText, setImgText] = useState("");
   const scrollRef = useRef(null);
-  const itemWidth = 192;
+  const itemWidth = 256;
   const normalizedIndex = clickedImgIndex % CarouselLength;
 
   const centerScrollToIndex = (index, behavior = "smooth") => {
@@ -30,7 +30,6 @@ export default function Carousel() {
   }, []);
 
   useEffect(() => {
-    const currentScroll = scrollRef.current;
 
     if (clickedImgIndex < CarouselLength || clickedImgIndex >= CarouselLength * 2) {
       const newIndex = (clickedImgIndex % CarouselLength) + CarouselLength;
@@ -54,13 +53,13 @@ export default function Carousel() {
   };
 
   return (
-    <div className="w-full h-96 bgLinear flex flex-col items-center justify-center relative">
+    <div className="w-full h-full bgLinear flex flex-col items-center justify-center relative">
       <div className="absolute right-0 top-5">
         <Header color={"#ffffff"}>Momentky</Header>
       </div>
       <div
         ref={scrollRef}
-        className="w-full h-5/9 flex !overflow-x-hidden whitespace-nowrap !mx-24 no-scrollbar items-center !mb-10"
+        className="w-full h-5/9 flex !overflow-x-hidden whitespace-nowrap  no-scrollbar items-center !mb-10"
       >
         {CarouselItemData.map((item, index) => (
           <motion.div
@@ -72,7 +71,7 @@ export default function Carousel() {
             }}
             onClick={() => handleClick(index)}
             transition={{ duration: 0.1 }}
-            className=" rounded-md overflow-hidden flex-shrink-0 h-48 w-48 flex flex-col justify-center "
+            className=" rounded-md overflow-hidden flex-shrink-0 size-64 flex flex-col justify-center "
           >
             <img
               src={item.image}
@@ -91,7 +90,7 @@ export default function Carousel() {
             }}
             onClick={() => handleClick(index + CarouselLength)}
             transition={{ duration: 0.5 }}
-            className=" rounded-md overflow-hidden flex-shrink-0 h-48 w-48 flex flex-col justify-center "
+            className=" rounded-md overflow-hidden flex-shrink-0 size-64 flex flex-col justify-center "
           >
             <img
               src={item.image}
@@ -110,7 +109,7 @@ export default function Carousel() {
             }}
             onClick={() => handleClick(index + CarouselLength * 2)}
             transition={{ duration: 0.5 }}
-            className=" rounded-md overflow-hidden flex-shrink-0 h-48 w-48 flex flex-col justify-center"
+            className=" rounded-md overflow-hidden flex-shrink-0 size-64 flex flex-col justify-center"
           >
             <img
               src={item.image}
@@ -120,7 +119,7 @@ export default function Carousel() {
           </motion.div>
         ))}
       </div>
-      <div className="text-white border-white border-2 rounded-xl  !p-2 ">
+      <div className="text-white border-white border-2 rounded-xl text-3xl !p-2 ">
         {imgText}
       </div>
     </div>

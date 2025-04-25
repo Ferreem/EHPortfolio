@@ -14,7 +14,9 @@ function App() {
         <Navbar/>
         <Hero/>
       </div>
+      <div style={{height:'70vh'}}>
       <Carousel/>
+      </div>
       <Work/>
       <Footer/>
     </>
