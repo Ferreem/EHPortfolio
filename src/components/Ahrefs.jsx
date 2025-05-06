@@ -5,7 +5,7 @@ import linkedin from "../assets/Linkedin.svg";
 
 export default function Ahrefs() {
   return (
-      <div className="w-42 h-14 flex items-center ml-2">
+      <div className="w-42 h-14 flex items-center ml-2 z-50">
         <a className="size-11 flex items-center justify-center box-content" 
         href="https://www.facebook.com/elee.chan.5">
           <img className="size-6 cursor-pointer" src={facebook} alt="facebook" />

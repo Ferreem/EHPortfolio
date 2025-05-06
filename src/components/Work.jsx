@@ -10,16 +10,31 @@ import Header from './Header'
 export default function Work() {
   const scrollRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isScrolling = useRef(false); // ✅ define scrolling loc
+
+  React.useEffect(() => {
+    workList.forEach((item) => {
+      const img = new Image();
+      img.src = item.img;
+    });
+  }, []);
 
   const handleClickUp = () => {
     if (scrollRef.current && currentIndex > 0) {
       const height = scrollRef.current.getBoundingClientRect().height;
       const newIndex = currentIndex - 1;
-      setCurrentIndex(newIndex);
+
       scrollRef.current.scrollTo({
         top: newIndex * height ,
         behavior: 'smooth',
-      });
+
+    });
+
+    setTimeout(() => {
+      setCurrentIndex(newIndex);
+      isScrolling.current = false;
+    }, 500); // match the scroll duration
+
     }
   };
 
@@ -27,12 +42,18 @@ export default function Work() {
     if (scrollRef.current && currentIndex < workList.length - 1) {
       const height = scrollRef.current.getBoundingClientRect().height;
       const newIndex = currentIndex + 1;
-      setCurrentIndex(newIndex);
-      scrollRef.current.scrollTo({
-        top: newIndex * height,
-        behavior: 'smooth',
+        scrollRef.current.scrollTo({
+          top: newIndex * height,
+          behavior: 'smooth',
       });
-    }
+    
+
+    setTimeout(() => {
+      setCurrentIndex(newIndex);
+      isScrolling.current = false;
+    }, 500); // match the scroll duration
+    
+  }
   };
 
   return (
@@ -50,7 +71,7 @@ export default function Work() {
           initial={{opacity: 0.5}}
           animate={{
             opacity: currentIndex === 0 ? 0.5 : 1
-          }} 
+          }}
           src={upArrow} alt="up" />
           <img className=' !mx-2.5 h-6' src={pipeLine} />
           <motion.img onClick={handleClickDown} 
@@ -69,7 +90,7 @@ export default function Work() {
               <img src={item.img} className='object-cover ' alt={item.header} />  
             </div>
           </div>
-          <div className='w-2/7 !p-6 flex flex-col items-center'>
+          <div className='w-2/7 !p-6 flex flex-col items-center mt-8'>
           <h3 className='text-4xl font-bold !mt-20 text-white text-center text-shadow-lg'>{item.header}</h3>
         <p className='!my-2 roboto-550 '>{item.year}</p>
         <p className='text-center text-xl w-4/6 funnel-sans-550'>{item.text}</p>

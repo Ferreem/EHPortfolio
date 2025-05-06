@@ -10,10 +10,9 @@ export default function Footer() {
   };
 
   return (
-    <div className='w-full h-20 bg-eBlue flex items-center justify-between relative'>
+    <div className='w-full h-20 bg-eBlue flex items-center text-center  justify-between relative'>
         <Ahrefs/>
-      <div className='text-white w-xl text-center flex flex-shrink-1
-      '
+      <div className='text-white flex flex-shrink-1 justify-center absolute w-full '
       style={{
         fontFamily: '"Funnel Sans", sans-serif',
         fontOpticalSizing: 'auto',
@@ -22,7 +21,7 @@ export default function Footer() {
       }} >
         © 2025 Eliska Havelkova
       </div>
-      <div className='flex justify-between w-24 mr-3'>
+      <div className='flex justify-between w-24 mr-8 z-50'>
         <button onClick={shift(0.08)} className='text-white text-sm cursor-pointer'>Úvod</button>
         <button onClick={shift(0.95)} className='text-white text-sm cursor-pointer'>Momentky</button>
       </div>
