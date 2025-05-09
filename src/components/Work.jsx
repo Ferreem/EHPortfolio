@@ -57,7 +57,7 @@ export default function Work() {
   };
 
   return (
-    <div className='w-full h-screen  flex justify-center items-center relative'>
+    <div className='w-full h-screen  flex justify-center items-center relative bg-white'>
       <div className='absolute top-8 right-0'>
         <Header color={"#051B75"}>Práce</Header>
       </div>

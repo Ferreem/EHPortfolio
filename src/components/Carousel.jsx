@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import CarouselItemData, { CarouselLength } from "../data/CarouselItemdata";
 import { useState, useEffect, useMemo } from "react";
 
-export default function Carousel({onLoad}) {
+export default function Carousel() {
   const middle = (CarouselLength * 3) / 2;
-  const [clickedImgIndex, setClickedImgIndex] = useState(middle);
+  const [clickedImgIndex, setClickedImgIndex] = useState(0);
   const [imgText, setImgText] = useState("");
   const scrollRef = useRef(null);
   const itemWidth = 256;
@@ -17,17 +17,13 @@ export default function Carousel({onLoad}) {
   const isAnimating = useRef(false);
   
 
-
-  useEffect(() => {
-    if (onLoad) onLoad();
-  }, []);
-
   const centerScrollToIndex = (index, behavior = "smooth") => {
     const container = scrollRef.current;
+    if (!container) return; // OCHRANA
+  
     const containerWidth = container.offsetWidth;
     const centerOffset = itemWidth * index - containerWidth / 2 + itemWidth / 2;
-    
-    
+  
     container.scrollTo({
       left: centerOffset,
       behavior,
@@ -77,8 +73,16 @@ export default function Carousel({onLoad}) {
       );
   }, []);
 
+  useEffect(() => {
+    // odlož první scroll na příští animation frame
+    requestAnimationFrame(() => {
+      setClickedImgIndex(middle);
+    });
+  }, []);
+
+
   return (
-    <div className="w-full h-full bgLinear flex flex-col items-center justify-center relative">
+    <div className="w-full  bgLinear flex flex-col items-center justify-center relative mt-8 h-[70vh]">
       <div className="absolute right-0 top-5">
         <Header color={"#ffffff"}>Momentky</Header>
       </div>
@@ -107,7 +111,7 @@ export default function Carousel({onLoad}) {
         ))}
       </div>
       <div className="text-white border-white border-2 rounded-xl text-2xl !p-2 ">
-        {imgText}
+        {imgText || "Click on image!"}
       </div>
     </div>
   );

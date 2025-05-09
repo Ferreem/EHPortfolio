@@ -28,7 +28,7 @@ export default function Hero() {
       <div className='bg-eGrey w-[100vw] h-[20vh] sm:w-[26vw] sm:h-[20vh] md:w-[14vw] md:h-[20vh] absolute z-40 bottom-0 right-0 rounded-md '></div>
       
       <Spline 
-        className='absolute inset-0 w-full h-full object-cover z-10' 
+        className='absolute inset-0 w-full h-full object-cover z-10 bottom-4' 
         scene="https://prod.spline.design/FTC2pROX4WVyEOrs/scene.splinecode"
       />
       
@@ -38,7 +38,7 @@ export default function Hero() {
             <div className='relative bg-eGrey h-16'>
             </div>
             <div className=' mb-4 w-4/6 flex flex-col relative'>
-            <div className='h-16 relative'>
+            <div className='h-16 relative max-w-[500px]'>
                 <h2 className='text-xl lg:text-5xl absolute left-0 -bottom-2 z-50'>Hello, I'm</h2>
                 <motion.h4 className='text-md lg:text-4xl absolute right-0 -bottom-2 z-50'
                 
@@ -60,9 +60,9 @@ export default function Hero() {
 
                   Graphic Designer</motion.h4>
               </div>
-              <h1 className='3xl:text-8xl 2xl:text-6xl lg:text-5xl md:text-4xl text-eYellow border-6 text-center !py-2 !px-1 relative'>Eliška Havelková</h1>
+              <h1 className=' 2xl:text-6xl lg:text-5xl md:text-4xl text-eYellow border-6 text-center !py-2 !px-1 relative max-w-[500px]'>Eliška Havelková</h1>
             </div>
-            <div style={{ direction: 'rtl' }} className='h-full flex  items-center  overflow-y-auto flex-col flex-shrink-0  text-left'>
+            <div style={{ direction: 'rtl' }} className='h-full flex overflow-y-auto flex-col flex-shrink-0  text-left'>
             <h5 className='lg:text-xl text-sm text-eBlue lg:mb-3'>Jsem <span className='italic'>grafická designérka a UX / UI designérka</span></h5><br />
             <p className='lg:text-xl text-sm text-eBlue font-thin'>
               V současnosti studuji výtvarnou výchovu. Můj přístup k designu spojuje analytické myšlení s kreativním přístupem, což mi umožňuje vytvářet funkční a vizuálně působivé digitální produkty. Jsem komunikativní a flexibilní, ráda pracuji v týmu a podílím se na projektech, které mě posouvají dál. Jsem otevřená novým výzvám a neustálému profesnímu rozvoji.
