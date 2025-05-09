@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import CarouselItemData, { CarouselLength } from "../data/CarouselItemdata";
 import { useState, useEffect, useMemo } from "react";
 
-export default function Carousel() {
+export default function Carousel({onLoad}) {
   const middle = (CarouselLength * 3) / 2;
   const [clickedImgIndex, setClickedImgIndex] = useState(middle);
   const [imgText, setImgText] = useState("");
@@ -17,15 +17,23 @@ export default function Carousel() {
   const isAnimating = useRef(false);
   
 
+
+  useEffect(() => {
+    if (onLoad) onLoad();
+  }, []);
+
   const centerScrollToIndex = (index, behavior = "smooth") => {
     const container = scrollRef.current;
     const containerWidth = container.offsetWidth;
     const centerOffset = itemWidth * index - containerWidth / 2 + itemWidth / 2;
+    
+    
     container.scrollTo({
       left: centerOffset,
       behavior,
     });
   };
+
   useEffect(() => {
     console.log(!isOutOfBounds);
     if (isFirstRender.current) {

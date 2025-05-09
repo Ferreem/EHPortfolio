@@ -1,12 +1,14 @@
 import Navbar from './components/Navbar'
-import Footer from './components/Footer'
 import Hero from './components/Hero'
-import Work from './components/Work'
-import Carousel from './components/Carousel'
+import { useState, Suspense, lazy } from 'react'
 import './App.css'
 
-function App() {
+const Carousel = lazy(() => import('./components/Carousel'));
+const Work = lazy(() => import('./components/Work'));
+const Footer = lazy(() => import('./components/Footer'))
 
+function App() {
+  const [carouselLoaded, setCarouselLoaded] = useState(false);
 
   return (
     <>
@@ -14,11 +16,18 @@ function App() {
         <Navbar/>
         <Hero/>
       </div>
-      <div style={{height:'70vh'}}>
-      <Carousel/>
-      </div>
-      <Work/>
-      <Footer/>
+
+      <Suspense>
+        <div style={{height:'70vh'}}>
+        <Carousel onLoad={() => setCarouselLoaded(true)}/>
+        </div>
+      </Suspense>
+      {carouselLoaded && (
+        <Suspense>
+          <Work/>
+          <Footer/>
+        </Suspense>
+      )}
     </>
   )
 }

@@ -25,7 +25,7 @@ export default function Hero() {
 
   return (
     <div className='flex md:flex-col h-screen bg-eGrey relative'>
-      <div className='bg-eGrey w-[100vw] h-[20vh] sm:w-[26vw] sm:h-[20vh] md:w-[21vw] md:h-[20vh] absolute z-40 bottom-0 right-0 rounded-full '></div>
+      <div className='bg-eGrey w-[100vw] h-[20vh] sm:w-[26vw] sm:h-[20vh] md:w-[14vw] md:h-[20vh] absolute z-40 bottom-0 right-0 rounded-md '></div>
       
       <Spline 
         className='absolute inset-0 w-full h-full object-cover z-10' 

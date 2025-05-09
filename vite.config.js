@@ -6,4 +6,9 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: '/EHPortfolio/',
   plugins: [react(), tailwindcss(),],
+
+
+  build: {
+    chunkSizeWarningLimit: 3000, 
+  }
 })
